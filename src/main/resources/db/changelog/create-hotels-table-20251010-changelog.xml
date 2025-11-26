@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/create-hotels-table-20251010-changelog.xml">
+    <changeSet id="create-hotels-table-20251010-changelog" author="stanislav" failOnError="true">
+        <createTable tableName="hotels" remarks="Таблица отелей">
+            <column name="id" type="bigint" autoIncrement="true" remarks="Уникальный идентификатор">
+                <constraints primaryKeyName="pk_hotels" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Название отеля">
+                <constraints nullable="false"/>
+            </column>
+            <column name="advertisement_title" type="varchar(255)" remarks="Рекламный заголовок">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(255)" remarks="Город">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(255)" remarks="Адрес">
+                <constraints nullable="false"/>
+            </column>
+            <column name="distance_from_city_center" type="double" remarks="Расстояние от центра города в км">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double" defaultValue="0.0" remarks="Рейтинг отеля">
+            </column>
+            <column name="rating_count" type="int" defaultValue="0" remarks="Количество оценок">
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

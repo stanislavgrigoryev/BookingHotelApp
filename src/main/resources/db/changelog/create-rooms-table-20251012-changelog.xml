@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/create-rooms-table-20251012-changelog.xml">
+    <changeSet id="create-rooms-table-20251012-changelog" author="stanislav" failOnError="true">
+        <createTable tableName="rooms" remarks="Таблица комнат">
+            <column name="id" autoIncrement="true" type="bigint" remarks="Уникальный идентификатор">
+                <constraints nullable="false" primaryKeyName="pk_rooms" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Название комнаты">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)" remarks="Описание комнаты">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_room" type="varchar(255)" remarks="Номер комнаты">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_rooms_number"/>
+            </column>
+            <column name="price" type="java.math.BigDecimal" remarks="Цена">
+                <constraints nullable="false"/>
+            </column>
+            <column name="capacity" type="bigint" remarks="Вместимость(количество человек)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hotel_id" type="bigint" remarks="Ссылка на отель">
+                <constraints nullable="false" foreignKeyName="fk_rooms_hotel_id" references="hotels(id)"/>
+            </column>
+        </createTable>
+        <createIndex tableName="rooms" indexName="idx_rooms_number_room">
+            <column name="number_room">
+            </column>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

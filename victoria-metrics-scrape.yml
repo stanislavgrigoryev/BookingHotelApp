@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "booking-hotel-app"
+    static_config:
+      - targets: ["localhost:8180"]
+    metrics_path: "/actuator/prometheus"

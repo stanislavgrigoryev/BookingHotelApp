@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/db.changelog-master.xml">
+    <include file="/db/changelog/create-hotels-table-20251010-changelog.xml"/>
+    <include file="/db/changelog/create-rooms-table-20251012-changelog.xml"/>
+    <include file="/db/changelog/create-rooms-unavailable-dates-20251013-changelog.xml"/>
+    <include file="/db/changelog/create-users-table-20251013-changelog.xml"/>
+    <include file="/db/changelog/create-roles-table-20251017-changelog.xml"/>
+    <include file="/db/changelog/create-bookings-table-20251018-changelog.xml"/>
+</databaseChangeLog>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/create-rooms-unavailable-dates-20251013-changelog.xml">
+    <changeSet id="create-rooms-unavailable-dates-20251013-changelog" author="stanislav" failOnError="true">
+        <createTable tableName="rooms_unavailable_dates">
+            <column name="room_id" type="bigint" remarks="Ссылка на комнату">
+                <constraints foreignKeyName="fk_room_unavailable_dates_room_id" references="rooms(id)"
+                             deleteCascade="true"/>
+            </column>
+            <column name="unavailable_date" type="date" remarks="Недоступные даты">
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="rooms_unavailable_dates"
+                       columnNames="room_id, unavailable_date"
+                       constraintName="pk_room_unavailable_dates"/>
+    </changeSet>
+</databaseChangeLog>

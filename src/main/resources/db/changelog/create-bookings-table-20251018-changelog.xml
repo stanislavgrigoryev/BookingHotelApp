@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/create-bookings-table-20251018-changelog.xml">
+    <changeSet id="create-bookings-table-20251018-changelog" author="stanislav" failOnError="true">
+        <createTable tableName="bookings">
+            <column name="id" type="bigint" autoIncrement="true" remarks="Уникальный идентификатор">
+                <constraints nullable="false" primaryKeyName="pk_bookings_id" primaryKey="true"/>
+            </column>
+            <column name="checkin" type="date" remarks="Дата заезда">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checkout" type="date" remarks="Дата выезда">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint" remarks="Ссылка на пользователя">
+                <constraints nullable="false" foreignKeyName="fk_bookings_user_id" references="users(id)"/>
+            </column>
+            <column name="room_id" type="bigint" remarks="Ссылка на комнату">
+                <constraints nullable="false" foreignKeyName="fk_bookings_room_id" references="rooms(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd"
+        logicalFilePath="db/changelog/create-users-table-20251013-changelog.xml">
+    <changeSet id="create-users-table-20251013-changelog" author="stanislav" failOnError="true">
+        <createTable tableName="users" remarks="Таблица пользователей">
+            <column name="id" type="bigint" autoIncrement="true" remarks="Уникальный идентификатор">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Имя пользователя">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_users_name"/>
+            </column>
+            <column name="password" type="varchar(255)" remarks="Зашифрованный пароль">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)" remarks="Электронная почта">
+                <constraints nullable="false" unique="true" uniqueConstraintName="uk_users_email"/>
+            </column>
+        </createTable>
+        <createIndex tableName="users" indexName="idx_users_name">
+            <column name="name">
+            </column>
+        </createIndex>
+        <createIndex tableName="users" indexName="idx_users_email">
+            <column name="email">
+            </column>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
