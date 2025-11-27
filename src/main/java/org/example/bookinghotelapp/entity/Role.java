@@ -44,7 +44,6 @@ public class Role {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private User user;
 
